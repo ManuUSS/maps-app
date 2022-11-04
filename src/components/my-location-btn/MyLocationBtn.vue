@@ -5,6 +5,7 @@
         @click="onMyLocationClicked"
     >
         Ir a mi ubicación
+        <i class="fa-solid fa-arrows-to-circle"></i>
     </button>
 </template>
 
