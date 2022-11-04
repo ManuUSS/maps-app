@@ -1,6 +1,6 @@
 import { defineComponent, ref, onMounted, watch } from 'vue';
-import { usePlacesStore } from '@/composables/usePlacesStore';
 import Mapboxgl from 'mapbox-gl';
+import { usePlacesStore, useMapStore } from '@/composables';
 
 export default defineComponent({
     name: 'MapView',
@@ -8,6 +8,7 @@ export default defineComponent({
 
         const mapElement = ref<HTMLDivElement>();
         const { userLocation, isUserLocationReady } = usePlacesStore();
+        const { setMap } = useMapStore();
 
         const initMap = async ( ) => {
 
@@ -34,14 +35,18 @@ export default defineComponent({
                 draggable: true
             }).setLngLat(userLocation.value!)
             .addTo(map);
+
+            setMap( map );
         }
+
+
 
         onMounted(() => {
             if ( isUserLocationReady.value ) 
                 return initMap();
         });
 
-        watch( isUserLocationReady, ( newVal ) => {
+        watch( isUserLocationReady, ( ) => {
             if( isUserLocationReady.value )
                 initMap(); 
         })
