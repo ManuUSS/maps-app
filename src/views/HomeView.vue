@@ -6,8 +6,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { usePlacesStore } from '../composables/usePlacesStore';
 
 export default defineComponent({
-  name: 'HomeView'
+  name: 'HomeView',
+  components: {},
+  setup() {
+    
+    usePlacesStore();
+  },
 });
 </script>
