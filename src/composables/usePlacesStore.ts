@@ -1,13 +1,12 @@
 import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { StateInterface } from '@/store/index';
 
 export const usePlacesStore = () => {
     const store = useStore();
     const state = computed(() => store.state.places);
-    const getters = computed(() => store.getters['places']);
-    const mutations = computed(() => store.commit);
-    const actions = computed(() => store.dispatch);
+    //const getters = computed(() => store.getters['places']);
+    //const mutations = computed(() => store.commit);
+    //const actions = computed(() => store.dispatch);
 
     onMounted(() => {
         if( !store.getters['places/isUserLocationReady'] ){
@@ -15,5 +14,15 @@ export const usePlacesStore = () => {
         }
     })
     
-    return { state, getters, mutations, actions };
+    return { 
+        //State
+        isLoading: computed(() => state.value.isLoading),
+        userLocation: computed(() => state.value.userLocation),
+
+        //Getters
+        isUserLocationReady: computed<boolean>(() => store.getters['places/isUserLocationReady']),
+        //Mutations
+
+        //Actions
+     };
 }
