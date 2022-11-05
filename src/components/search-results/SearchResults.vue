@@ -23,7 +23,7 @@
                         class="btn btn-outline-primary btn-sm"
                         :class="( place.id === activePlace ) ? 'btn-selectedPlace' : ''"
                     >
-                        <i class="fa-solid fa-location-dot"></i>
+                        <i class="fa-solid fa-location-arrow"></i>
                     </button>
                 </div>
             </li>
