@@ -24,5 +24,6 @@ export const usePlacesStore = () => {
         //Mutations
 
         //Actions
+        searchPlacesByTerm: ( query = ''  ) => store.dispatch( 'places/searchPlaces', query )
      };
 }
