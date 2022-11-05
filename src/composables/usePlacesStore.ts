@@ -18,6 +18,8 @@ export const usePlacesStore = () => {
         //State
         isLoading: computed(() => state.value.isLoading),
         userLocation: computed(() => state.value.userLocation),
+        places: computed(() => state.value.places), 
+        isLoadingPlaces: computed(() => state.value.isLoadingPlaces), 
 
         //Getters
         isUserLocationReady: computed<boolean>(() => store.getters['places/isUserLocationReady']),

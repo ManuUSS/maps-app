@@ -1,14 +1,29 @@
 <script lang="ts" src="./SearchResults.ts"/>
 
 <template>
-    <ul class="list-group mt-3">
-            <li class="list-group-item list-group-item-action">
-                <h5>Nombre del lugar</h5>
-                <p>Descripcion</p>
+    <div v-if="isLoadingPlaces" 
+        class="alert alert-primary text-center"
+    >
+        <h5>Cargando</h5>
+        <span>Espere por favor...</span>
+    </div>
+    <ul v-else-if="places.length > 0" 
+        class="list-group mt-3"
+    >
+            <li v-for="place in places" 
+                :key="place.id" 
+                class="list-group-item list-group-item-action"
+                :class="{ 'active': place.id === activePlace }"
+                @click="onPlaceClick( place )"
+            >
+                <h6>{{ place.text }}</h6>
+                <p>{{ place.place_name }}</p>
                 <div class="d-flex justify-content-end align-items-end">
-                    <button class="btn btn-outline-primary btn-sm">
-                        Direcciones
-                        <i class="fa-solid fa-turn-up ps-2"></i>
+                    <button 
+                        class="btn btn-outline-primary btn-sm"
+                        :class="( place.id === activePlace ) ? 'btn-selectedPlace' : ''"
+                    >
+                        <i class="fa-solid fa-location-dot"></i>
                     </button>
                 </div>
             </li>
@@ -20,11 +35,19 @@
         cursor: pointer;
     }
 
-    h5 {
-        font-size: 15px;
+    h6 {
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 2px;
     }
 
     p {
-        font-size: 11px;
+        font-size: 10px;
+        margin: 0;
+    }
+
+    .btn-selectedPlace {
+        color: white;
+        border-color: white;
     }
 </style>
