@@ -21,8 +21,10 @@
                 <div class="d-flex justify-content-end align-items-end">
                     <button 
                         class="btn btn-outline-primary btn-sm"
-                        :class="( place.id === activePlace ) ? 'btn-selectedPlace' : ''"
+                        :class="( place.id === activePlace ) ? 'btn-selectedPlace' : 'btn-outline-primary'"
+                        @click.self="getDirections( place )"
                     >
+                        Direcciones
                         <i class="fa-solid fa-location-arrow"></i>
                     </button>
                 </div>
