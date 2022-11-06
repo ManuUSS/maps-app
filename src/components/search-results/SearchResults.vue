@@ -18,7 +18,7 @@
             >
                 <h6>{{ place.text }}</h6>
                 <p>{{ place.place_name }}</p>
-                <div class="d-flex justify-content-end align-items-end">
+                <div class="d-flex justify-content-end align-items-end mt-2">
                     <button 
                         class="btn btn-outline-primary btn-sm"
                         :class="( place.id === activePlace ) ? 'btn-selectedPlace' : 'btn-outline-primary'"

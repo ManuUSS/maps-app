@@ -8,7 +8,7 @@ import { LngLat } from '@/store/map/actions';
 export const useMapStore = () => {
 
     const store = useStore<StateInterface>();
-
+ 
     return {
         map: computed<Mapboxgl.Map|undefined>( () => store.state.map.map ),
         distance: computed<number|undefined>( () => store.state.map.distance ),
@@ -22,6 +22,7 @@ export const useMapStore = () => {
         setPlaceMarkers: ( places: Feature[] ) => store.commit( 'map/setPlaceMarkers', places ),
 
         //Actions
-        getRouteBetweenPoints: ( start: LngLat, end: LngLat ) => store.dispatch( 'map/getRouteBetweenPoints', { start, end } )
+        getRouteBetweenPoints: ( start: LngLat, end: LngLat ) => store.dispatch( 'map/getRouteBetweenPoints', { start, end } ),
+
     }
 }
